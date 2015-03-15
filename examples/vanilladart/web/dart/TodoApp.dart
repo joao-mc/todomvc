@@ -2,6 +2,8 @@ part of todomvc;
 
 class TodoApp {
 
+	static final Uuid uuid = new Uuid();
+
 	List<TodoWidget> todoWidgets = new List<TodoWidget>();
 
 	Element todoListElement = querySelector('#todo-list');
@@ -42,7 +44,7 @@ class TodoApp {
 		  if (e.keyCode == KeyCode.ENTER) {
         var title = newTodoElement.value.trim();
         if (title.isNotEmpty) {
-          addTodo(new Todo(uuid(), title));
+          addTodo(new Todo(uuid.v4(), title));
           newTodoElement.value = '';
           updateFooterDisplay();
           save();
